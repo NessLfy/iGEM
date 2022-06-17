@@ -130,3 +130,6 @@ dmypy.json
 
 results*.xml
 .obsidian/
+
+Target_sequences_full.xlsx
+Target_sequences_oyster.xlsx
