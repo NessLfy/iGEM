@@ -100,7 +100,6 @@ Will output something like
 - Be carefull on the number of inquiries made to the NCBI server:
 	- I tried 50 -> failed
 	- I tried 5 successfull -> Success
-	- I tried 10 -> failed (don't understand why, I cheked the failed sequences 1 by one and they worked, probably an issue with the code somewhere)
 
 # Optimization 
 Try to make it faster and also it will deal with errors (sequences that don't blast) -> **WORK IN PROGRESS** 
@@ -144,7 +143,7 @@ webbrowser.open_new('http://localhost:8888/notebooks/Documents/iGEM/iGEM/Run%20B
 - If we have access to a Thau transcriptome:
 	- If it is online :
 		- Scrap the website to gather the dataset (temporarly)
-		- run BLAST locally #faster because no need to send it to the NCBI
+		- run BLAST locally, faster because no need to send it to the NCBI
 		- save the output and loop over all the dataset
 	- If we can get the dataset -> easiest:
 		- Run the pipeline directly and filter the results

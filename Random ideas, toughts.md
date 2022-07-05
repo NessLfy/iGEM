@@ -45,3 +45,18 @@ Complementary: take a water sample and try to have the metagenome of it:
 
 
 
+# Multiplexing, practical thinking: 
+
+We need to figure out what will make our project different from the rest. Our idea of multiplexing makes the project unique as it creates a semi quantitative analysis. Hence the importance of the modeling to be able to be even more quantitative. 
+
+Now in the amount of time we have we need to figure out what our project will be: 
+- Either we want to develop a paper based test:
+	- Need to figure out how we can multiplex in a single paper test : difficulties with the lyophylisation of the protein the migration of the probe, we need at least 4 different antibodies with catch proteins (streptaviin for example)
+	- Or we can multiplex in the sense where we have 4 different papers (with each the same probe basically) and we can still target different genes.
+		- The problem with this approach is how do you link the 4 test, how can you compare "different experiences" (might not be the same concentration of sample in the 4, pipetting errors,...)
+- We can also stick with the in-vitro technique (in a single tube):
+	- Problem is that its not really usable in the field (need a plate reader) 
+	- But it brings a new dimension of estimating the well being of the oyster plus the pathogen which is not done with the actual tests (pcrs)
+	- We can also do the multiplexing in different tubes (only need one probe)
+	- Issue with one pot sherlock is the need for different cas and different probes with different fluorophore which might not be easy to order and to have... 
+
