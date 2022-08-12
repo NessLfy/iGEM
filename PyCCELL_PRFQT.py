@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -109,7 +108,6 @@ def excelreader(name,gain,correct):
     #return the final table
     
     return (df_Fvalues)
-
 
 
 def plot_raw_data(data,nr,nc):
@@ -221,14 +219,21 @@ def collapse(data,tripl,control):
     
     df_Fcollapse[df_Fcollapse<0]=0
     
-    return (df_Fcollapse,std)
+    # add the std value to a dataframe to concatenate to the new dataframe
+    
+    df = pd.DataFrame(std)
+    df = df.T
+    
+    df_Fcollapse = pd.concat([df_Fcollapse,df],axis=1)
+    
+    return (df_Fcollapse)
 
 
-def plot_triplicates(data,sa,yerr):
+def plot_triplicates(data,sa):
     std = []
     for i in data.columns:
         std.append(statistics.stdev(data[i]))
-
+    yerr=std
     if sa == "NO":
         for col,i in zip(data.columns,range(len(data.columns.values)-1)):
             plt.errorbar(data['Time'],data[col],yerr=yerr[i],label=data.columns.values[:-1][i])
@@ -241,7 +246,6 @@ def plot_triplicates(data,sa,yerr):
     plt.show()
 
 
-
 def main(data,gain,cor,nr,nc,tripl,control,sa):
     
     file = excelreader(data,gain,cor)
@@ -250,14 +254,11 @@ def main(data,gain,cor,nr,nc,tripl,control,sa):
     
     fileC = collapse(file,tripl,control)
     
-    plot_triplicates(fileC[0],sa,fileC[1])
-    
-    return (fileC[0],fileC[1])
+    plot_triplicates(fileC,sa)
+        
+    return fileC
 
 
-# test
-#test = main('results/SHERLOCK/1st_try_probe_dilution/first_sherlock_probe_concentr_modif.xlsx',50,"NO",3,5,'col',['M23', 'N23', 'O23'],"NO")[0]
-
-
-
+#test = main('results/SHERLOCK/1st_try_probe_dilution/first_sherlock_probe_concentr_modif.xlsx',50
+            #,"NO",3,5,'col',['M23', 'N23', 'O23'],"YES")
 
