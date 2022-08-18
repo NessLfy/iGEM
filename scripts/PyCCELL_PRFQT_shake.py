@@ -28,12 +28,12 @@ def excelreader(name,gain,correct):
 
     if re.search('Synergy',str(test.iloc[7,1])) == None :
         
-        s = 64
+        s = 66
         
         correction = [3720.7,39499,47364,192405]
 
     else: 
-        s = 67
+        s = 69
         
         correction = [5929.3,57884,73091,283567]
         
