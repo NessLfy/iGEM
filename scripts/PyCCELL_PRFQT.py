@@ -30,12 +30,14 @@ def excelreader(name,gain,correct):
         
         s = 64
         
-        correction = [3720.7,39499,47364,192405]
+        #correction = [3720.7,39499,47364,192405]
+        correction = [186,2100,3410,283567]
 
     else: 
         s = 67
         
-        correction = [5929.3,57884,73091,283567]
+        #correction = [5929.3,57884,73091,283567]
+        correction = [186,2100,3410,283567]
         
         
         
@@ -256,7 +258,14 @@ def main(data,gain,cor,nr,nc,tripl,control,sa):
         
     return fileC
 
-
+def mainf(data,gain,cor,tripl,control):
+    
+    file = excelreader(data,gain,cor)
+        
+    fileC = collapse(file,tripl,control)
+    
+    return fileC
+    
 #test = main('results/SHERLOCK/1st_try_probe_dilution/first_sherlock_probe_concentr_modif.xlsx',50
             #,"NO",3,5,'col',['M23', 'N23', 'O23'],"YES")
 
