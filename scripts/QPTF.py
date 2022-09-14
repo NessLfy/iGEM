@@ -76,7 +76,7 @@ def quantif(path,names):
     plt.xticks([i for i in range(len(test))],names,rotation=20)
     plt.ylabel("Ratio test/control (A.U)")
     plt.tight_layout()
-    plt.show()
+    #plt.show()
 
 
 def quantifg(path,names):
