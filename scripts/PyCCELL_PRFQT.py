@@ -86,7 +86,7 @@ def excelreader(name,gain,correct):
     df_Fvalues = df_Fcellfree.reset_index().drop([remove[0],remove[1],'index'],axis = 1).astype('float64')
     
     
-    if correct == "NO":
+    if correct.upper() == "NO":
         df_Fvalues = df_Fvalues  
     else:
         df_Fvalues = df_Fvalues/c # the calibration to go back to µM 
