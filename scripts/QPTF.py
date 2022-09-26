@@ -77,7 +77,7 @@ def quantif(path,names):
     plt.ylabel("Ratio test/control (A.U)")
     plt.tight_layout()
     #plt.show()
-
+    return [ratio]
 
 def quantifg(path,names):
     
