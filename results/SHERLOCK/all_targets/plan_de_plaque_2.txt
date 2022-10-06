@@ -17,9 +17,9 @@ G5 	->	Trigopus
 G8 	->	NC 
 H2 	->	DnaJ09
 H5 	->	60s
-I2 	->	DnaJ10_f
+I2 	->	DnaJ10
 I5 	->	flaA
-J2 	->	ToxR_f
+J2 	->	ToxR
 J5 	->	100nM_ToxR
 K2 	->	ToxRm1
 K5 	->	10nM_ToxR

@@ -3,6 +3,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def quantif(path,names):
     
@@ -72,7 +73,7 @@ def quantif(path,names):
     
     # plot 
     
-    plt.bar([i for i in range(len(test))],ratio)
+    sns.barplot([i for i in range(len(test))],ratio)
     plt.xticks([i for i in range(len(test))],names,rotation=20)
     plt.ylabel("Ratio test/control (A.U)")
     plt.tight_layout()
@@ -152,8 +153,9 @@ def quantifg(path,names):
     
     # plot 
     
-    plt.bar([i for i in range(len(test))],ratio)
+    sns.barplot([i for i in range(len(test))],ratio)
     plt.xticks([i for i in range(len(test))],names,rotation=60)
     plt.ylabel("Ratio test/control (A.U)")
     plt.tight_layout()
     #plt.show()
+    return [ratio]

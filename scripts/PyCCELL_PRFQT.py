@@ -22,13 +22,15 @@ def excelreader(name,gain,correct):
     
     df_cellfree = pd.ExcelFile(name)
     
+    
     # find the machine name to know where data start 
     
     test = pd.DataFrame(df_cellfree.parse(0))
 
     if re.search('Synergy',str(test.iloc[7,1])) == None :
         
-        s = 64
+        #s = 64
+        s = 45
         
         #correction = [3720.7,39499,47364,192405]
         correction = [186,2100,3410,283567]
@@ -49,9 +51,9 @@ def excelreader(name,gain,correct):
         time_interval = int(re.findall(r'\d+',test.iloc[17,1])[-3])
 
     else : 
+        time_points = int(re.findall(r'\d+',test.iloc[15,1])[-1])
+        time_interval = int(re.findall(r'\d+',test.iloc[15,1])[-3])
         
-        time_points = int(re.findall(r'\d+',test.iloc[16,1])[-1])
-        time_interval = int(re.findall(r'\d+',test.iloc[16,1])[-3])
     # "crop" the table depending on the gain set 
     
     if gain == 50 :
@@ -66,7 +68,6 @@ def excelreader(name,gain,correct):
     elif gain == 100 : 
         df_Fcellfree = pd.DataFrame(df_cellfree.parse(0).values[s:s+1+time_points])
         c = correction[3]
-
     # Label first row as  column names
     df_Fcellfree.columns = df_Fcellfree.iloc[0]
     
@@ -74,15 +75,13 @@ def excelreader(name,gain,correct):
     # Drop the first row (Which is column names)
     df_Fcellfree = df_Fcellfree.iloc[1: , :]
     
-    
     # Drop the First Column ---> Generates "NAN column"
     df_Fcellfree = df_Fcellfree.iloc[: , 1:] #drop the temperatur column
     
-    df_Fcellfree = df_Fcellfree.dropna(axis=1) #drop any extras columns generated with NaN values
+    #df_Fcellfree = df_Fcellfree.dropna(axis=1) #drop any extras columns generated with NaN values
     
     remove = np.asarray(df_Fcellfree.columns)
-    
-    
+
     df_Fvalues = df_Fcellfree.reset_index().drop([remove[0],remove[1],'index'],axis = 1).astype('float64')
     
     
@@ -115,10 +114,13 @@ def plot_raw_data(data,nr,nc):
     counter = 0
     for i in range(nr):
         for j in range(nc):
-            axs[i,j].plot(data['Time'],data[data.columns[counter]])
-            counter+=1
+            if data.columns[counter] != 'Time':
+                axs[i,j].plot(data['Time'],data[data.columns[counter]])
+                counter+=1
+            else:
+                counter+=1
         #plt.ylim(0,0.9)
-    plt.show()
+    #plt.show()
 
 
 def collapse(data,tripl,control):
@@ -243,7 +245,7 @@ def plot_triplicates(data,sa):
         for col,i in zip(data.columns,range(len(data.columns.values)-1)):
             plt.errorbar(data['Time'],data[col],yerr=yerr[i],label=data.columns.values[:-1][i])
             plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-    plt.show()
+    #plt.show()
 
 
 def main(data,gain,cor,nr,nc,tripl,control,sa):
